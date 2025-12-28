@@ -13,8 +13,8 @@ import AuthLayout from '@/layouts/auth-layout';
 export default function Register() {
     return (
         <AuthLayout
-            title="Create an account"
-            description="Enter your details below to create your account"
+            title="Criar sua conta"
+            description="Entre com seus dados para criar sua conta"
         >
             <Head title="Register" />
             <Form
@@ -27,25 +27,39 @@ export default function Register() {
                     <>
                         <div className="grid gap-6">
                             <div className="grid gap-2">
-                                <Label htmlFor="name">Name</Label>
+                                {/* <Label htmlFor="first_name">First Name</Label> */}
                                 <Input
-                                    id="name"
+                                    id="first_name"
                                     type="text"
                                     required
                                     autoFocus
                                     tabIndex={1}
-                                    autoComplete="name"
-                                    name="name"
-                                    placeholder="Full name"
+                                    autoComplete="given-name"
+                                    name="first_name"
+                                    placeholder="Nome"
+                                    className="border-gray-300 focus:border-green-600 focus:ring-green-600 bg-white text-gray-900"
                                 />
-                                <InputError
-                                    message={errors.name}
-                                    className="mt-2"
-                                />
+                                <InputError message={errors.first_name} />
                             </div>
 
                             <div className="grid gap-2">
-                                <Label htmlFor="email">Email address</Label>
+                                {/* <Label htmlFor="last_name">Last Name</Label> */}
+                                <Input
+                                    id="last_name"
+                                    type="text"
+                                    required
+                                    tabIndex={2}
+                                    autoComplete="family-name"
+                                    name="last_name"
+                                    placeholder="Sobrenome"
+                                    className="border-gray-300 focus:border-green-600 focus:ring-green-600 bg-white text-gray-900"
+                                />
+                                <InputError message={errors.last_name} />
+                            </div>
+
+
+                            <div className="grid gap-2">
+                                {/* <Label htmlFor="email">Email address</Label> */}
                                 <Input
                                     id="email"
                                     type="email"
@@ -54,12 +68,13 @@ export default function Register() {
                                     autoComplete="email"
                                     name="email"
                                     placeholder="email@example.com"
+                                    className="border-gray-300 focus:border-green-600 focus:ring-green-600 bg-white text-gray-900"
                                 />
                                 <InputError message={errors.email} />
                             </div>
 
                             <div className="grid gap-2">
-                                <Label htmlFor="password">Password</Label>
+                                {/* <Label htmlFor="password">Password</Label> */}
                                 <Input
                                     id="password"
                                     type="password"
@@ -67,15 +82,16 @@ export default function Register() {
                                     tabIndex={3}
                                     autoComplete="new-password"
                                     name="password"
-                                    placeholder="Password"
+                                    placeholder="Senha"
+                                    className="border-gray-300 focus:border-green-600 focus:ring-green-600 bg-white text-gray-900"
                                 />
                                 <InputError message={errors.password} />
                             </div>
 
                             <div className="grid gap-2">
-                                <Label htmlFor="password_confirmation">
+                                {/* <Label htmlFor="password_confirmation">
                                     Confirm password
-                                </Label>
+                                </Label> */}
                                 <Input
                                     id="password_confirmation"
                                     type="password"
@@ -83,7 +99,8 @@ export default function Register() {
                                     tabIndex={4}
                                     autoComplete="new-password"
                                     name="password_confirmation"
-                                    placeholder="Confirm password"
+                                    placeholder="Confirme a senha"
+                                    className="border-gray-300 focus:border-green-600 focus:ring-green-600 bg-white text-gray-900"
                                 />
                                 <InputError
                                     message={errors.password_confirmation}
@@ -92,21 +109,23 @@ export default function Register() {
 
                             <Button
                                 type="submit"
-                                className="mt-2 w-full"
+                                className="mt-2 w-full bg-green-600 hover:bg-green-700 text-white font-semibold cursor-pointer"
                                 tabIndex={5}
                                 data-test="register-user-button"
                             >
                                 {processing && <Spinner />}
-                                Create account
+                                Cadastrar-se
                             </Button>
+
                         </div>
 
-                        <div className="text-center text-sm text-muted-foreground">
-                            Already have an account?{' '}
-                            <TextLink href={login()} tabIndex={6}>
-                                Log in
+                        <div className="text-center text-sm text-gray-700">
+                            Já tem uma conta?{' '}
+                            <TextLink href={login()} tabIndex={6} className="text-green-600 hover:text-green-700 font-medium">
+                                Faça login
                             </TextLink>
                         </div>
+
                     </>
                 )}
             </Form>
